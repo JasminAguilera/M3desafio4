@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propiedades en Venta</title>
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Inmobiliaria ADL</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="alquiler.html">Alquiler</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Propiedades en Venta</h2>
+        <div class="row" id="lista-venta"></div>
+    </div>
+    
+    <script>
+      const propiedades_venta = [
+        {
+          nombre: 'Apartamento de lujo',
+          src: "assets/img/apartamentodelujo.jpeg",
+          descripcion: 'Apartamento en una zona exclusiva.',
+          ubicacion: '123 Luxury Lane, Prestige Suburb, CA 45678',
+          habitaciones: 4,
+          baños: 4,
+          costo: 5000,
+          smoke: false,
+          pets: false
+        },
+        {
+          nombre: 'Penthouse de lujo',
+          src: "assets/img/penthouselujo.jpeg",
+          descripcion: 'Penthouse con terraza panorámica.',
+          ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
+          habitaciones: 3,
+          baños: 3,
+          costo: 4500,
+          smoke: false,
+          pets: true
+        },
+        {
+          nombre: 'Casa familiar',
+          src: "assets/img/casafamiliar.jpeg",
+          descripcion: 'Casa ideal para familias.',
+          ubicacion: '789 Family Lane, Family Town, CA 12345',
+          habitaciones: 5,
+          baños: 3,
+          costo: 6000,
+          smoke: true,
+          pets: true
+        },
+        {
+          nombre: 'Apartamento moderno',
+          src: "assets/img/apartamentomoderno.jpeg",
+          descripcion: 'Moderno apartamento en el centro.',
+          ubicacion: '101 Modern St, City Center, CA 67890',
+          habitaciones: 2,
+          baños: 2,
+          costo: 3000,
+          smoke: false,
+          pets: false
+        },
+      ];
+
+      function cargarPropiedades() {
+        const listaVenta = document.getElementById('lista-venta');
+
+        propiedades_venta.forEach(propiedad => {
+          listaVenta.innerHTML += `
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img src="${propiedad.src}" class="card-img-top" alt="${propiedad.nombre}" />
+                <div class="card-body">
+                  <h5 class="card-title">${propiedad.nombre}</h5>
+                  <p class="card-text">${propiedad.descripcion}</p>
+                  <p><i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}</p>
+                  <p><i class="fas fa-bed"></i> ${propiedad.habitaciones} Habitaciones | <i class="fas fa-bath"></i> ${propiedad.baños} Baños</p>
+                  <p><i class="fas fa-dollar-sign"></i> ${propiedad.costo}</p>
+                  <p class="${propiedad.smoke ? 'text-success' : 'text-danger'}">
+                    <i class="${propiedad.smoke ? 'fas fa-smoking' : 'fas fa-smoking-ban'}"></i> ${propiedad.smoke ? 'Permitido fumar' : 'No se permite fumar'}
+                  </p>
+                  <p class="${propiedad.pets ? 'text-success' : 'text-danger'}">
+                    <i class="${propiedad.pets ? 'fas fa-paw' : 'fas fa-ban'}"></i> ${propiedad.pets ? 'Mascotas permitidas' : 'No se permiten mascotas'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      window.onload = cargarPropiedades;
+    </script>
+    <script src="https://kit.fontawesome.com/f5bdbb41e0.js" crossorigin="anonymous"></script>
+</body>
+</html>
